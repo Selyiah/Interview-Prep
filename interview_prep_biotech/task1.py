@@ -48,19 +48,47 @@ runs_clean["month"] = runs_clean["run_start"].dt.to_period("M").dt.to_timestamp(
 
 # 6. Aggregate
 summary = (
-  runs_clean
+  runs_clean # the original table being used to produce the summary. 
       .groupby(["month", "instrument_id"])
       .agg(
           total_reads=("read_count", "sum"), 
-          run_count="run_id", "count")
+          run_count=("run_id", "count")
       )
-      .reset_index()
+      .reset_index() # moves them back into normal columns to use like a normal table 
 )
 
 summary 
 
 
 
+# answer without notes 
 
+import pandas as pd 
 
+runs["status"] = runs["status"].str.lower().str.strip()
+
+runs["run_start"] = pd.to_datetime(runs["run_start"], errors="coerece")
+
+run["read_count"] = pd.to_numeric(runs["run_start"], errors="coerece")
+
+runs_clean = runs[
+    (runs["status"] == "completed") &
+    (runs["run_start"].notna()) & 
+    (runs["read_count"] > 0)
+]
+
+runs_clean["month"] = runs_clean["run_start"].dt.to_period.("M").dt.to_timestamp()
+
+summary = (
+  runs_clean
+      .groupby(["months", "instrument_id"])
+      .agg (
+        total_reads=("read_count", "sum"),
+        run_count=("run_id", "count")
+      )
+      .reset_index()
+
+)
+
+summary
   
