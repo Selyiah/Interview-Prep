@@ -79,7 +79,7 @@ monthly_study_throughput
 study_failure_flag = job_logs.loc[job_logs["state"].isin(["failed", "aborted"]), "study"].unique()
 
 study_flags = (
-  job_logs(["study"])
+  job_logs[["study"]].drop_duplicates()
       .assign(has_failed_job=lamba df: df["study"].isin(study_failure_flag))
 )
 
