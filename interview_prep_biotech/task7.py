@@ -38,7 +38,7 @@ runs["read_count"] = pd.to_numeric(runs["read_count"], errors="coerce")
 #(Hint: this is a conditional logic task, not groupby.)
 
 conditions = [
-    runs["run_start"].isna(),
+    runs["run_start"].isna(), #isna = is the value missing? whereas notna = is the value present?
     runs["read_count"].isna() | (runs["read_count"] <= 0),
     runs["status"] != "completed"
 ]
