@@ -115,9 +115,11 @@ Questions:
 -When you're deciding who to move forward with for this role, what tends to stand out most to you or what qualities are you mainly looking for?  
 
 >communication
+
 >sense of ownership
 
 -If I joined, what would success look like in the first 6 months?
 
 > subject matter expert for the infrstrastucture ( a lot of reverse engineering)
+
 > pick one, two of those to generate results (with tangible action). 
