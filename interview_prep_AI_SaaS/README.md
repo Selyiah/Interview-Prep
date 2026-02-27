@@ -122,4 +122,34 @@ Questions:
 
 > subject matter expert for the infrstrastucture ( a lot of reverse engineering)
 
-> pick one, two of those to generate results (with tangible action). 
+> pick one, two of those to generate results (with tangible action).
+
+
+
+
+
+HOME TASK ASSIGNMENT
+
+They want:
+
+Production DB
+→ GCP Warehouse
+→ 3 Consumers:
+
+1️⃣ Internal BI
+2️⃣ External customer reporting
+3️⃣ LLM querying
+
+Evaluated on:
+
+-Scalability
+
+-Robustness / reliability
+
+-Security
+
+So everything I design must clearly map to those 3 scoring pillars.
+
+
+
+
