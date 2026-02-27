@@ -109,10 +109,15 @@ I think I've become more deliberate. Before, I might focus on getting something 
 
 Questions: 
 -what are the biggest data platform challenges you're currently facing?
-> data foundation
+
+ data foundation
+
 -When you're deciding who to move forward with for this role, what tends to stand out most to you or what qualities are you mainly looking for?  
+
 >communication
+
 >sense of ownership
+
 -If I joined, what would success look like in the first 6 months?
 > subject matter expert for the infrstrastucture ( a lot of reverse engineering)
 > pick one, two of those to generate results (with tangible action). 
