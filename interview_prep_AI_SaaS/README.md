@@ -152,4 +152,74 @@ So everything I design must clearly map to those 3 scoring pillars.
 
 
 
+Design principles = 
+
+1. Don't risk the app (keep production safe)
+- We don't run heavy reporting queries on the production database. We copy data out so the product stays fast and stable.
+
+2. Keep each part seperate (seperate ingestion, modelling and serving)
+- One part pulls the data, one part cleans/transforms it, and one part serves it to users. This makes it easier to maintain and debug.
+
+3. Only load what changed (load incrementally)
+- We avoid reloading everything every time. We load new or changed data so it scales and stays efficient.
+
+4. Different outputs for different users
+- Internal teams, customers, and the LLM should not all use the same tables. Each
+gets a "safe, fit-for-purpose" version.
+
+5. Access should be tight by default
+- People and systems should only see what they need. This protects sensitive data
+and reduces risk.
+
+6. Build it so it's easy to extend
+- We design it so adding a new source, a new customer report, or a new AI use case
+doesn't require rebuilding everything.
+
+contract = the agreed shape and rules of the data a consumer relies on. 
+what it's promised to deliver and in what format. 
+
+
+
+High level architecture = 
+
+Production DB > GCP warehouse > three use cases 
+
+1) Production database
+- Source of truth (don't query for analytics)
+
+2) Ingestion layer
+- Scheduled incremental loads (starts here)
+- Optional CDC later for specific tables
+- Orchestrated by Airflow
+- Uses a service account
+
+3) BigQuery RAW dataset (bronze)
+- Landing tables
+- Minimal changes
+- Partitioned by date where possible
+
+4) Transformations (dbt in BigQuery)
+-Silver: cleaned, standardised
+-Gold: business-ready models (facts/dims)
+
+5) Consumption
+- Internal BI dataset (Omni or BI tool)
+- External customer dataset (isolated + secure)
+- LLM dataset (curated semantic layer + goverened access)
+
+
+Datasets (think of it like a folder and inside that folder are tables) = 
+
+>raw
+
+>silver
+
+>gold_internal
+
+>gold_customer
+
+>gold_llm
+
+
+
 
