@@ -63,3 +63,51 @@ Questions for the talent manager:
 - From your perspective, what traits tend to stand out in candidates who do really well in this team?
 
 
+
+- PART 2 -
+
+Can you walk me through a data system you designed end-to-end, including the key decisions you made? 
+
+one project I worked on was rebuilding the PayPal ingestion pipeline for payments reporting. The business needed accurate weekly consolidated payment data, but the existing solution was unreliable and only captured a single day due to an API limitation. 
+
+When I reviewed the API constraints, I discovered it only allowed single-day extraction. So instead of continuing with a weekly monolithic load, I redesigned the system into two pipelines: a daily ingestion pipeline that extracted and stored raw data and a seperate aggregation pipeline that consolidated those daily files into a weekly output for downstream processing. 
+
+The key decision was seperating ingestion from aggregation. That improved failure isolation, simplified retries and reduced operational risk. The trade-off was slightly more orchestration complexity, but the reliability gains justified it. 
+
+As a result, we replaced an unusable dataset with a trusted payments table that now supports accurate reporting on PayPal transactions, including different PayPal payment types. It significantly improved confidence in payment-related KPIs. 
+
+
+
+what makes a good data model? 
+
+a good data model has a clearly defined level of detail, seperates measurable events from descriptive context and uses consistent keys to maintain clean relationships between 
+tables. It avoids duplication and unecessary complexity, making it easy to understand and extend. Ultimately a good model supports accurate analysis while remaining 
+maintainable over time. 
+
+
+
+how do you see data engineering enabling our AI platform? 
+
+For an AI-powered platform, the quality of the output is directly tied to the quality of the underlying data. If the data is inconsistent, poorly modelled or unreliable, the ai 
+layer can produce misleading insights. Data engineering ensure that entities are clearly defined, relationships are structured and pipelines are reliable and reproducible. 
+That foundation allows AI features to operate consistently and scale with confidence. 
+
+
+
+
+growth outside day-to-day
+
+outside of my day-to-day work, I focus on deepening my understanding of scalable data architecture and modelling patterns, especially around designing systems for long-term 
+maintainability. I also spend time exploring how AI capabilities integrate with structured data platforms, because I'm interested in building systems that enable intelligent 
+features, not just reporting. 
+
+
+what specifically have you improved? 
+
+I think I've become more deliberate. Before, I might focus on getting something working. Now I think more about structure up front - how it could fail, how it could scale and where someone else could easily understand it later. 
+
+
+Questions: 
+what are the biggest data platform challenges you're currently facing?
+When you're deciding who to move forward with for this role, what tends to stand out most to you or what qualities are you mainly looking for?  
+If I joined, what would success look like in the first 6 months? 
