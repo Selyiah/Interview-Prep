@@ -221,5 +221,14 @@ Datasets (think of it like a folder and inside that folder are tables) =
 >gold_llm
 
 
+Security for gold_customer: 
+1. IAM (who can access the dataset at all)
+2. Row-level policies (which rows they see)
+3. Column controls or curated views (which fields they see)
+
+External reporting layer becomes: 
+- curated, tenant-isolated, sensitive fields removed and auditable 
+
+
 
 
